@@ -23,6 +23,16 @@ class SnapTableViewController: UITableViewController {
       FIRDatabase.database().reference().child("users").child(uid).child("snaps").observe(.childAdded) { (snapshot) in
         self.snaps.append(snapshot)
         self.tableView.reloadData()
+        FIRDatabase.database().reference().child("users").child(uid).child("snaps").observe(.childRemoved, with: { (snapshot) in
+          var index = 0
+          for snap in self.snaps {
+            if snapshot.key == snap.key {
+              self.snaps.remove(at: index)
+            }
+            index = index + 1
+           }
+          self.tableView.reloadData()
+        })
       }
     }
   }

@@ -12,6 +12,6 @@ target 'SnapChat' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
-  pod 'SDWebImageFix', '~> 3.7'
+  pod 'SDWebImage', '~> 4.0'
 
 end
